@@ -17,3 +17,6 @@ Pada gambar di atas, terlihat bahwa port yang digunakan oleh client dan server b
 ![alt text](image-2.png)
 
 Setelah port server diubah dari `2000` menjadi `8080`, client kembali dapat terhubung ke server seperti sebelumnya. Perlu dipahami bahwa meskipun client langsung menggunakan protokol WebSocket untuk melakukan koneksi, server awalnya hanya mendengarkan koneksi TCP di port `8080`. Koneksi tersebut kemudian diproses dan di-upgrade ke protokol WebSocket melalui kode, sehingga komunikasi dua arah berbasis WebSocket dapat terjadi antara client dan server.
+
+![alt text](image-3.png)
+Disini saya hanya menambahkan teks saja untuk memahami pesan agar lebih mudah dipahami.

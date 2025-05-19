@@ -23,7 +23,7 @@ async fn handle_connection(
                     Some(Ok(msg)) => {
                         if let Some(text) = msg.as_text() {
                             println!("Message from client {addr:?}: {text:?}");
-                            bcast_tx.send(text.into())?;
+                            bcast_tx.send(format!("{addr:?}: {text:?}"))?;
                         }
                     }
                     Some(Err(err)) => return Err(err.into()),
@@ -42,11 +42,11 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     let (bcast_tx, _) = channel(16);
 
     let listener = TcpListener::bind("127.0.0.1:8080").await?;
-    println!("Listening on port 8080");
+    println!("Listening on port 8080 from Fachri's laptop");
 
     loop {
         let (socket, addr) = listener.accept().await?;
-        println!("New connection from {addr:?}!");
+        println!("New connection from Fachri's laptop: {addr:?}!");
         let bcast_tx = bcast_tx.clone();
         tokio::spawn(async move {
             let ws_stream = ServerBuilder::new().accept(socket).await?;
